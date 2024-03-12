@@ -78,4 +78,7 @@ dependencies {
     val edittext_version = "1.0.7"
     implementation("com.github.thomhurst:ExpandableHintText:${edittext_version}")
 
+    val otp_view_version = "3.1.0"
+    implementation("com.github.mukeshsolanki.android-otpview-pinview:otpview:$otp_view_version")
+
 }

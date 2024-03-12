@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.geekster.preskeep.R
 import com.geekster.preskeep.ViewModel.AuthViewModel
 import com.geekster.preskeep.databinding.FragmentSignupBinding
 import com.geekster.preskeep.utils.Constants.TAG
@@ -50,6 +52,9 @@ class SignupFragment : Fragment() {
             Log.d(TAG, "onViewCreated: ${tokenManager.getToken("SESSION_ID").toString()}")
         }
 
+        binding.buttonSignup.setOnClickListener{
+            findNavController().navigate(R.id.action_signupFragment_to_otpFragment)
+        }
 //        binding.btnSubmit.setOnClickListener {
 //            lifecycleScope.launch{
 //                authViewModel.createUserWithPhone(getUserRequest())
