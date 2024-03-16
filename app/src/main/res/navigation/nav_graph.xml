@@ -3,20 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/signupFragment">
+    app:startDestination="@id/entryFragment">
 
     <fragment
         android:id="@+id/signupFragment"
         android:name="com.geekster.preskeep.ScreenFragments.SignupFragment"
         android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" >
-        <action
-            android:id="@+id/action_signupFragment_to_otpFragment"
-            app:destination="@id/otpFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_signup" />
     <fragment
         android:id="@+id/otpFragment"
         android:name="com.geekster.preskeep.ScreenFragments.OtpFragment"
         android:label="fragment_otp"
-        tools:layout="@layout/fragment_otp" />
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otpFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/entryFragment"
+        android:name="com.geekster.preskeep.ScreenFragments.EntryFragment"
+        android:label="fragment_entry"
+        tools:layout="@layout/fragment_entry" >
+        <action
+            android:id="@+id/action_entryFragment_to_otpFragment"
+            app:destination="@id/otpFragment" />
+    </fragment>
 </navigation>

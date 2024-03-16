@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#DDE8EC"
-    tools:context=".ScreenFragments.OtpFragment">
+    tools:context=".ScreenFragments.EntryFragment">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="331dp"
         android:layout_height="286dp"
         android:layout_marginTop="52dp"
-        android:src="@drawable/signup_svg"
+        android:src="@drawable/request_otp_page"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="We've sent you an OTP"
+            android:text="@string/let_s_get_started"
             android:textAlignment="center"
             android:textColor="@color/dark_blue"
             android:textSize="26sp" />
@@ -42,6 +42,7 @@
             android:id="@+id/textview_otp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:text="@string/otp_to_this_number"
             android:fontFamily="@font/montserrat_medium"
             android:textAlignment="center"
             android:textColor="@color/semi_transparent_dark_blue"
@@ -54,31 +55,30 @@
         android:layout_height="203dp"
         android:layout_marginTop="36dp"
         android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@id/linearLayout">
 
-        <com.mukeshsolanki.OtpView
-            android:id="@+id/otp_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:inputType="number"
+        <EditText
+            android:id="@+id/phoneNumber"
+            android:layout_width="310dp"
+            android:layout_height="45dp"
             android:layout_gravity="center"
-            android:textAllCaps="true"
-            app:OtpLineWidth="1dp"
-            app:OtpItemRadius="5dp"
-            android:focusableInTouchMode="true"
-            android:hint="Enter OTP code to verify"
-            app:OtpLineColor="#80001B48"
-            android:itemBackground="@drawable/edittext_authentication"
+            android:layout_marginTop="23dp"
+            android:background="@drawable/edittext_authentication"
+            android:drawableStart="@drawable/phone_svg"
+            android:drawablePadding="7dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:paddingStart="10dp"
             android:textColor="@color/dark_blue"
-            app:OtpItemCount="6"
-            app:OtpItemSpacing="10dp"
-            app:OtpState_filled="true"
-            app:OtpViewType="rectangle"
-            />
+            android:textColorHint="#A6001B48"
+            android:textSize="15sp"
+            tools:layout_editor_absoluteX="42dp"
+            tools:layout_editor_absoluteY="381dp" />
 
     </LinearLayout>
 
@@ -89,7 +89,7 @@
         android:layout_marginTop="44dp"
         android:background="@drawable/button_authentication"
         android:fontFamily="@font/montserrat"
-        android:text="@string/verify"
+        android:text="@string/request_otp"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="17sp"
@@ -97,6 +97,5 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/linearLayout2"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

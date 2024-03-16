@@ -2,10 +2,13 @@
     <string name="app_name">PresKeep</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="request_otp">Request OTP</string>
-    <string name="create_an_account">Create an account</string>
-    <string name="let_s_get_started">Let’s get started</string>
+    <string name="create_account">Create Account</string>
+    <string name="tell_us_a_bit"> Tell us a bit about yourself</string>
+    <string name="Welcome">Hey! Welcome 👋</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="login">Login</string>
     <string name="verify">Verify</string>
+    <string name="let_s_get_started">Let’s get started</string>
+    <string name="otp_to_this_number">We’’ll send you an OTP to this number</string>
+    <string name="request_otp">Request OTP</string>
 </resources>

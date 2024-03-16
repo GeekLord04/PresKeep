@@ -12,7 +12,7 @@
         android:id="@+id/imageView"
         android:layout_width="331dp"
         android:layout_height="286dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="64dp"
         android:src="@drawable/signup_svg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/let_s_get_started"
+            android:text="@string/Welcome"
             android:textAlignment="center"
             android:textColor="@color/dark_blue"
             android:textSize="26sp" />
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/montserrat_medium"
-            android:text="@string/create_an_account"
+            android:text="@string/tell_us_a_bit"
             android:textAlignment="center"
             android:textColor="@color/semi_transparent_dark_blue"
             android:textSize="16sp" />
@@ -53,7 +53,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="342dp"
         android:layout_height="203dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="68dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.444"
@@ -61,36 +61,38 @@
         app:layout_constraintTop_toBottomOf="@id/linearLayout">
 
         <EditText
+            android:id="@+id/name_signup"
             android:layout_width="310dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="6dp"
+            android:background="@drawable/edittext_authentication"
             android:drawableStart="@drawable/name_svg"
-            android:paddingStart="10dp"
             android:drawablePadding="7dp"
+            android:fontFamily="@font/montserrat"
             android:hint="Name"
+            android:paddingStart="10dp"
             android:textColor="@color/dark_blue"
             android:textColorHint="#A6001B48"
             android:textSize="15dp"
-            android:fontFamily="@font/montserrat"
-            android:background="@drawable/edittext_authentication"
             tools:layout_editor_absoluteX="42dp"
             tools:layout_editor_absoluteY="381dp" />
 
         <EditText
+            android:id="@+id/name_gender"
             android:layout_width="310dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_authentication"
             android:drawableStart="@drawable/gender_svg"
-            android:paddingStart="10dp"
             android:drawablePadding="7dp"
+            android:fontFamily="@font/montserrat"
             android:hint="Gender"
+            android:paddingStart="10dp"
             android:textColor="@color/dark_blue"
             android:textColorHint="#A6001B48"
             android:textSize="15dp"
-            android:fontFamily="@font/montserrat"
-            android:background="@drawable/edittext_authentication"
             tools:layout_editor_absoluteX="42dp"
             tools:layout_editor_absoluteY="381dp" />
 
@@ -99,15 +101,16 @@
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="23dp"
+            android:background="@drawable/edittext_authentication"
             android:drawableStart="@drawable/phone_svg"
-            android:paddingStart="10dp"
             android:drawablePadding="7dp"
+            android:fontFamily="@font/montserrat"
             android:hint="Phone Number"
+            android:inputType="number"
+            android:paddingStart="10dp"
             android:textColor="@color/dark_blue"
             android:textColorHint="#A6001B48"
             android:textSize="15dp"
-            android:fontFamily="@font/montserrat"
-            android:background="@drawable/edittext_authentication"
             tools:layout_editor_absoluteX="42dp"
             tools:layout_editor_absoluteY="381dp" />
     </LinearLayout>
@@ -119,7 +122,7 @@
         android:layout_marginTop="44dp"
         android:background="@drawable/button_authentication"
         android:fontFamily="@font/montserrat"
-        android:text="@string/request_otp"
+        android:text="@string/create_account"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="17sp"
@@ -127,36 +130,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/linearLayout2"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-    <LinearLayout
-        android:layout_width="239dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginBottom="25dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button_signup"
-        app:layout_constraintStart_toStartOf="@+id/button_signup"
-        app:layout_constraintTop_toBottomOf="@id/button_signup"
-        app:layout_constraintVertical_bias="0.563">
-
-        <TextView
-            android:layout_width="187dp"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/already_have_an_account"
-            android:textColor="@color/semi_dark_blue"
-            android:textSize="15sp" />
-
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/login"
-            android:textColor="@color/semi_dark_blue"
-            android:textSize="15sp" />
-
-    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,9 +11,11 @@ import androidx.navigation.fragment.findNavController
 import com.geekster.preskeep.R
 import com.geekster.preskeep.ViewModel.AuthViewModel
 import com.geekster.preskeep.databinding.FragmentSignupBinding
+import com.geekster.preskeep.models.UserRequest
 import com.geekster.preskeep.utils.Constants.TAG
 import com.geekster.preskeep.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
+import io.appwrite.ID
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -52,9 +54,9 @@ class SignupFragment : Fragment() {
             Log.d(TAG, "onViewCreated: ${tokenManager.getToken("SESSION_ID").toString()}")
         }
 
-        binding.buttonSignup.setOnClickListener{
-            findNavController().navigate(R.id.action_signupFragment_to_otpFragment)
-        }
+//        binding.buttonSignup.setOnClickListener{
+//            findNavController().navigate(R.id.action_signupFragment_to_otpFragment)
+//        }
 //        binding.btnSubmit.setOnClickListener {
 //            lifecycleScope.launch{
 //                authViewModel.createUserWithPhone(getUserRequest())
@@ -69,7 +71,8 @@ class SignupFragment : Fragment() {
     }
 
 //    private fun getUserRequest() : UserRequest {
-//        val phoneNo = binding.phoneNumber.text.toString()
+//        val name =
+//        val phoneNo =
 //        val userId = ID.unique()
 //        return UserRequest(userId,phoneNo)
 //    }
