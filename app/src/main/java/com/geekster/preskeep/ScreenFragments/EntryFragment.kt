@@ -48,17 +48,14 @@ class EntryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (tokenManager.getToken("SESSION_ID") != null){
-            Log.d(TAG, "Session ID: ${tokenManager.getToken("SESSION_ID").toString()}")
-        }
-        if (tokenManager.getToken("USER_ID") != null){
-            Log.d(TAG, "USER ID: ${tokenManager.getToken("USER_ID").toString()}")
-        }
+        // Binding the ccp with Phone number
+        binding.ccp.registerCarrierNumberEditText(binding.phoneNumber)
 
         binding.buttonVerify.setOnClickListener {
             if (binding.phoneNumber.text.toString().isNotEmpty()){
                 lifecycleScope.launch {
                     authViewModel.createUserWithPhone(getUserRequest())
+
                 }
             }
             else{
@@ -70,27 +67,30 @@ class EntryFragment : Fragment() {
     }
 
     private fun bindObserver() {
-        authViewModel.userResponseLiveData.observe(viewLifecycleOwner, Observer {
-            when(it){
+        authViewModel.userResponseLiveData.observe(viewLifecycleOwner) {
+            when (it) {
                 is Resource.Success -> {
-                    tokenManager.saveToken("USER_ID", it.data!!.id)
+                    Log.d(TAG, "USER ID: ${it.data.toString()}")
+                    tokenManager.saveToken("USER_ID", it.data!!.userId)
+                    tokenManager.saveToken("PHONE_NO",getUserRequest().phoneNo)
+                    Log.d(TAG, "Phone no: ${tokenManager.getToken("PHONE_NO")}")
                     findNavController().navigate(R.id.action_entryFragment_to_otpFragment)
                 }
 
                 is Resource.Error -> {
-                    Toast.makeText(context,"${it.message}",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT).show()
                 }
 
                 is Resource.Loading -> {
-                    Log.d(TAG, "Loading")
+                    Log.d(TAG, "Entry Fragment Loading")
                 }
             }
 
-        })
+        }
     }
 
     private fun getUserRequest() : UserRequest {
-        val phoneNo = binding.phoneNumber.text.toString()
+        val phoneNo = binding.ccp.fullNumberWithPlus
         val userId = ID.unique()
         return UserRequest(uniqueId = userId, phoneNo = phoneNo)
     }

@@ -81,4 +81,6 @@ dependencies {
     val otp_view_version = "3.1.0"
     implementation("com.github.mukeshsolanki.android-otpview-pinview:otpview:$otp_view_version")
 
+    implementation("com.hbb20:ccp:2.7.3")
+
 }

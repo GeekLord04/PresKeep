@@ -51,19 +51,40 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="355dp"
+        android:layout_width="400dp"
         android:layout_height="203dp"
         android:layout_marginTop="36dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@id/linearLayout">
 
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
+            android:layout_width="60dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="23dp"
+            android:background="@drawable/edittext_authentication"
+            android:textSize="12sp"
+            app:ccp_showFullName="false"
+            app:ccp_showPhoneCode="true"
+            app:ccp_showNameCode="false"
+            app:ccp_showFlag="false"
+            android:gravity="center"
+            app:ccp_autoFormatNumber="true"
+            app:ccp_showArrow="true"
+            app:ccp_arrowSize="15dp"
+            app:ccpDialog_keyboardAutoPopup="false"
+            android:textColor="@color/dark_blue"
+            android:fontFamily="@font/montserrat"
+            />
+
         <EditText
             android:id="@+id/phoneNumber"
-            android:layout_width="310dp"
+            android:layout_width="268dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="23dp"

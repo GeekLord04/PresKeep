@@ -18,4 +18,16 @@ class TokenManager @Inject constructor(@ApplicationContext context: Context) {
     fun getToken(key:String) : String? {
         return prefs.getString(key,null)
     }
+
+    fun deleteSpecificToken(key: String) {
+        val editor = prefs.edit()
+        editor.remove(key)
+        editor.apply()
+    }
+
+    fun deleteAllToken(){
+        val editor = prefs.edit()
+        editor.clear()
+        editor.apply()
+    }
 }
