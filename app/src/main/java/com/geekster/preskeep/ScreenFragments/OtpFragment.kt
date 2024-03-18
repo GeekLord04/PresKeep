@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.geekster.preskeep.R
 import com.geekster.preskeep.ViewModel.AuthViewModel
 import com.geekster.preskeep.databinding.FragmentOtpBinding
@@ -73,6 +74,14 @@ class OtpFragment : Fragment() {
                 is Resource.Success -> {
                     Log.d(TAG, "Session ID: ${it.data.toString()}")
                     tokenManager.saveToken("SESSION_ID",it.data!!.id)
+                    lifecycleScope.launch {
+                        if (authViewModel.checkUserInDatabase(tokenManager.getToken("PHONE_NO")!!, requireContext())){
+                            findNavController().navigate(R.id.action_otpFragment_to_homeActivity)
+                        }
+                        else{
+                            findNavController().navigate(R.id.action_otpFragment_to_signupFragment)
+                        }
+                    }
                 }
                 is Resource.Error -> {
                     Toast.makeText(context,"${it.message}",Toast.LENGTH_SHORT).show()

@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_otpFragment_to_signupFragment"
             app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_otpFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
     </fragment>
     <fragment
         android:id="@+id/entryFragment"
@@ -28,4 +31,9 @@
             android:id="@+id/action_entryFragment_to_otpFragment"
             app:destination="@id/otpFragment" />
     </fragment>
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.geekster.preskeep.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" />
 </navigation>

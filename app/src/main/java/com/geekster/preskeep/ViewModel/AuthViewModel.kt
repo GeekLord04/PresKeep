@@ -11,6 +11,7 @@ import com.geekster.preskeep.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.appwrite.models.Session
 import io.appwrite.models.Token
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -44,10 +45,12 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepositoryIm
         }
     }
 
-    suspend fun checkUserInDatabase(phoneNumber : String, context : Context){
-        viewModelScope.launch {
+    suspend fun checkUserInDatabase(phoneNumber : String, context : Context) : Boolean{
+        val deferredJob = viewModelScope.async {
             repository.checkUser(phoneNumber, context)
         }
+        return deferredJob.await()
     }
+
 
 }

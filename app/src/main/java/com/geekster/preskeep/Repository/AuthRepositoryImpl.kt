@@ -32,6 +32,7 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
     val userResponseLiveData: LiveData<Resource<Token>>
         get() = _userResponseLiveData
 
+
     private val _userOTPResponseLiveData = MutableLiveData<Resource<Session>>()
     val userOTPResponseLiveData: LiveData<Resource<Session>>
         get() = _userOTPResponseLiveData
@@ -40,6 +41,7 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
     private val _userDatabaseResponseLiveData = MutableLiveData<Resource<String>>()
     val userDatabaseResponseLiveData: LiveData<Resource<String>>
         get() = _userDatabaseResponseLiveData
+
 
     override suspend fun phoneLogin(userRequest : UserRequest){
         try {
@@ -86,19 +88,17 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
         }
     }
 
-    override suspend fun checkUser(phoneNumber: String, context : Context) {
+    override suspend fun checkUser(phoneNumber: String, context : Context) : Boolean {
         val getPhoneNumber = database.listDocuments(
             databaseId = DATABASE_ID,
             collectionId = COLLECTION_ID,
             queries = listOf(Query.equal("Phone",phoneNumber))
         )
-
-        Log.d(TAG, "checkUser: $getPhoneNumber")
         
         if (getPhoneNumber.total == 1.toLong()){
-            Toast.makeText(context, "User already exists", Toast.LENGTH_SHORT).show()
+            return true
         }
-
+        return false
     }
 
 
