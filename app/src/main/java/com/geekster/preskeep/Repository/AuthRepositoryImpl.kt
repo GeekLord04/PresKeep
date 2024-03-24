@@ -14,6 +14,7 @@ import com.geekster.preskeep.utils.Resource
 import com.geekster.preskeep.utils.TokenManager
 import io.appwrite.ID
 import io.appwrite.Query
+import io.appwrite.models.Document
 import io.appwrite.models.Session
 import io.appwrite.models.Token
 import io.appwrite.services.Account
@@ -28,18 +29,18 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
     lateinit var tokenManager: TokenManager
 
 
-    private val _userResponseLiveData = MutableLiveData<Resource<Token>>()
+    private var _userResponseLiveData = MutableLiveData<Resource<Token>>()
     val userResponseLiveData: LiveData<Resource<Token>>
         get() = _userResponseLiveData
 
 
-    private val _userOTPResponseLiveData = MutableLiveData<Resource<Session>>()
+    private var _userOTPResponseLiveData = MutableLiveData<Resource<Session>>()
     val userOTPResponseLiveData: LiveData<Resource<Session>>
         get() = _userOTPResponseLiveData
 
 
-    private val _userDatabaseResponseLiveData = MutableLiveData<Resource<String>>()
-    val userDatabaseResponseLiveData: LiveData<Resource<String>>
+    private var _userDatabaseResponseLiveData = MutableLiveData<Resource<Document<Map<String, Any>>>>()
+    val userDatabaseResponseLiveData: LiveData<Resource<Document<Map<String, Any>>>>
         get() = _userDatabaseResponseLiveData
 
 
@@ -80,7 +81,7 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
             )
             Log.d(TAG, "database response: $response")
 //                tokenManager.saveToken("DATABASE_TOKEN",response.id)
-            _userDatabaseResponseLiveData.postValue(Resource.Success(response.toString()))
+            _userDatabaseResponseLiveData.postValue(Resource.Success(response))
         }
         catch (e : Exception){
             _userDatabaseResponseLiveData.postValue(Resource.Error("${e.message}"))
@@ -94,11 +95,29 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
             collectionId = COLLECTION_ID,
             queries = listOf(Query.equal("Phone",phoneNumber))
         )
-        
+
         if (getPhoneNumber.total == 1.toLong()){
             return true
         }
         return false
+    }
+
+    override suspend fun clearLiveData(data : String) {
+        when(data){
+            "Response" -> {
+                _userResponseLiveData = MutableLiveData<Resource<Token>>()
+            }
+            "OTP" -> {
+                _userOTPResponseLiveData = MutableLiveData<Resource<Session>>()
+            }
+            "Database" -> {
+                _userDatabaseResponseLiveData = MutableLiveData<Resource<Document<Map<String, Any>>>>()
+            }
+            else ->{
+                Log.d(TAG, "clearLiveData: No data mentioned")
+            }
+        }
+
     }
 
 

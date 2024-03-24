@@ -97,6 +97,7 @@
             tools:layout_editor_absoluteY="381dp" />
 
         <EditText
+            android:id="@+id/phone_signup"
             android:layout_width="310dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
@@ -104,9 +105,10 @@
             android:background="@drawable/edittext_authentication"
             android:drawableStart="@drawable/phone_svg"
             android:drawablePadding="7dp"
+            android:focusable="false"
             android:fontFamily="@font/montserrat"
             android:hint="Phone Number"
-            android:inputType="number"
+            android:inputType="phone"
             android:paddingStart="10dp"
             android:textColor="@color/dark_blue"
             android:textColorHint="#A6001B48"

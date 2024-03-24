@@ -9,6 +9,7 @@ import com.geekster.preskeep.models.UserRequest
 import com.geekster.preskeep.models.otpRequest
 import com.geekster.preskeep.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.appwrite.models.Document
 import io.appwrite.models.Session
 import io.appwrite.models.Token
 import kotlinx.coroutines.async
@@ -24,7 +25,7 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepositoryIm
     val userOTPResponseLiveData: LiveData<Resource<Session>>
         get() = repository.userOTPResponseLiveData
 
-    val userDatabaseResponseLiveData : LiveData<Resource<String>>
+    val userDatabaseResponseLiveData : LiveData<Resource<Document<Map<String, Any>>>>
         get() = repository.userDatabaseResponseLiveData
 
     suspend fun createUserWithPhone(userRequest : UserRequest)  {
@@ -50,6 +51,10 @@ class AuthViewModel @Inject constructor(private val repository: AuthRepositoryIm
             repository.checkUser(phoneNumber, context)
         }
         return deferredJob.await()
+    }
+
+    suspend fun clearLiveData(data : String){
+        repository.clearLiveData(data)
     }
 
 

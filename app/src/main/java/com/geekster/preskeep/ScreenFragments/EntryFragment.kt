@@ -48,6 +48,7 @@ class EntryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        
         // Binding the ccp with Phone number
         binding.ccp.registerCarrierNumberEditText(binding.phoneNumber)
 

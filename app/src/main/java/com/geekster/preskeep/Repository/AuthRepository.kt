@@ -10,5 +10,6 @@ interface AuthRepository {
     suspend fun verifyOtp(otpRequest: otpRequest)
     suspend fun userRegister(userRequest: UserRequest)
     suspend fun checkUser(phoneNumber: String, context : Context) : Boolean
+    suspend fun clearLiveData(data : String)
 
 }

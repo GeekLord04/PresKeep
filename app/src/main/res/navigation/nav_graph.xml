@@ -9,7 +9,11 @@
         android:id="@+id/signupFragment"
         android:name="com.geekster.preskeep.ScreenFragments.SignupFragment"
         android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" />
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signupFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
+    </fragment>
     <fragment
         android:id="@+id/otpFragment"
         android:name="com.geekster.preskeep.ScreenFragments.OtpFragment"
