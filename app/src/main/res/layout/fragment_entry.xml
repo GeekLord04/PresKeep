@@ -52,7 +52,7 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="400dp"
-        android:layout_height="203dp"
+        android:layout_height="150dp"
         android:layout_marginTop="36dp"
         android:orientation="horizontal"
         android:gravity="center"
@@ -69,6 +69,7 @@
             android:layout_marginTop="23dp"
             android:background="@drawable/edittext_authentication"
             android:textSize="12sp"
+            android:layout_marginEnd="12dp"
             app:ccp_showFullName="false"
             app:ccp_showPhoneCode="true"
             app:ccp_showNameCode="false"
@@ -97,7 +98,7 @@
             android:paddingStart="10dp"
             android:textColor="@color/dark_blue"
             android:textColorHint="#A6001B48"
-            android:textSize="15sp"
+            android:textSize="17sp"
             tools:layout_editor_absoluteX="42dp"
             tools:layout_editor_absoluteY="381dp" />
 
@@ -107,7 +108,7 @@
         android:id="@+id/button_verify"
         android:layout_width="205dp"
         android:layout_height="45dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/button_authentication"
         android:fontFamily="@font/montserrat"
         android:text="@string/request_otp"

@@ -76,6 +76,7 @@ class EntryFragment : Fragment() {
                     tokenManager.saveToken("PHONE_NO",getUserRequest().phoneNo)
                     Log.d(TAG, "Phone no: ${tokenManager.getToken("PHONE_NO")}")
                     findNavController().navigate(R.id.action_entryFragment_to_otpFragment)
+
                 }
 
                 is Resource.Error -> {

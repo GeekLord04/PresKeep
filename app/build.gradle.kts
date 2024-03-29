@@ -84,4 +84,8 @@ dependencies {
 
     implementation("com.hbb20:ccp:2.7.3")
 
+    //Bottom navigation
+    implementation("com.etebarian:meow-bottom-navigation:1.3.1")
+
+
 }
