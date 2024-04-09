@@ -13,13 +13,11 @@ A Prescription Management App built in Kotlin using the MVVM architecture and Ap
 - Jetpack Navigation Framework
 
 ## The UI
-![OTP](https://github.com/GeekLord04/PresKeep/assets/84928799/469ab738-43c4-4711-8134-84924c00fbab)
-![Login](https://github.com/GeekLord04/PresKeep/assets/84928799/360d0367-0b76-49ac-92b6-8cc5cac727c7)
+![Login](https://github.com/GeekLord04/PresKeep/assets/84928799/0d010301-5144-46ff-8f4b-35d728dced98)
+![OTP](https://github.com/GeekLord04/PresKeep/assets/84928799/e8889a5b-1315-413c-87ce-960009b86fce)
 ![Home Screen - Patient](https://github.com/GeekLord04/PresKeep/assets/84928799/494e520c-97c8-4f8c-8bc2-b9c69ce90f5b)
 ![UserSCreen](https://github.com/GeekLord04/PresKeep/assets/84928799/8245f9b5-fff4-46b9-bf98-24dc0b855e9a)
 ![Home Screen_report - Patient](https://github.com/GeekLord04/PresKeep/assets/84928799/bdf695af-eea7-4ce8-a809-76b803d56321)
 
-
-## The API
-For the API, refer to <a href = "https://github.com/GeekLord04/Notes-API">Notes API repository </a>
+#This  App is currently under Development
 
