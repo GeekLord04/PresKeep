@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#DDE8EC"
-    tools:context=".ScreenFragments.OtpFragment">
+    tools:context=".ScreenFragments.AuthFragment.OtpFragment">
 
     <ImageView
         android:id="@+id/imageView"

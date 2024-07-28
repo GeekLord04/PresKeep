@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.geekster.preskeep.Repository.AuthRepositoryImpl
+import com.geekster.preskeep.Repository.AuthRepository.AuthRepositoryImpl
 import com.geekster.preskeep.models.UserRequest
 import com.geekster.preskeep.models.otpRequest
 import com.geekster.preskeep.utils.Resource

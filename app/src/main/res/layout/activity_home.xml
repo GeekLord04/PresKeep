@@ -3,8 +3,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@drawable/signup_svg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/home_nav_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="58dp"
+        app:defaultNavHost="true"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/home_nav_graph" />
+
+
+    <com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation
+        android:id="@id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:cbn_background="@color/dark_blue"
+        app:cbn_curve_radius="26dp"
+        app:cbn_fabColor="#00001B48"
+        app:cbn_height="70dp"
+        app:cbn_hasAnimation="false"
+        android:background="@color/white"
+        app:cbn_iconColor="@color/white"
+        app:cbn_icon_size="24dp"
+        app:cbn_selectedIconColor="@color/dark_blue"
+        app:cbn_selected_icon_size="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

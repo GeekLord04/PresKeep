@@ -8,15 +8,27 @@
         android:id="@+id/prescriptionFragment2"
         android:name="com.geekster.preskeep.ScreenFragments.HomeFragments.PrescriptionFragment"
         android:label="fragment_prescription"
-        tools:layout="@layout/fragment_prescription" />
+        tools:layout="@layout/fragment_prescription" >
+        <action
+            android:id="@+id/action_prescriptionFragment2_to_home_nav_graph"
+            app:popUpTo="@id/home_nav_graph" />
+    </fragment>
     <fragment
         android:id="@+id/reportFragment"
         android:name="com.geekster.preskeep.ScreenFragments.HomeFragments.ReportFragment"
         android:label="fragment_report"
-        tools:layout="@layout/fragment_report" />
+        tools:layout="@layout/fragment_report" >
+        <action
+            android:id="@+id/action_reportFragment_to_prescriptionFragment2"
+            app:popUpTo="@id/prescriptionFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/userFragment"
         android:name="com.geekster.preskeep.ScreenFragments.HomeFragments.UserFragment"
         android:label="fragment_user"
-        tools:layout="@layout/fragment_user" />
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_prescriptionFragment2"
+            app:popUpTo="@id/prescriptionFragment2" />
+    </fragment>
 </navigation>

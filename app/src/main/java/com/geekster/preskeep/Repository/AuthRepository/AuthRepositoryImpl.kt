@@ -1,8 +1,7 @@
-package com.geekster.preskeep.Repository
+package com.geekster.preskeep.Repository.AuthRepository
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.geekster.preskeep.models.UserRequest
@@ -23,7 +22,8 @@ import javax.inject.Inject
 
 
 
-class AuthRepositoryImpl @Inject constructor(private val account: Account, private val database : Databases) : AuthRepository {
+class AuthRepositoryImpl @Inject constructor(private val account: Account, private val database : Databases) :
+    AuthRepository {
 
     @Inject
     lateinit var tokenManager: TokenManager
@@ -74,8 +74,8 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
     override suspend fun userRegister(userRequest: UserRequest) {
         try {
             val response = database.createDocument(
-                databaseId = "65f1efc89d9549a17e06",
-                collectionId = "65f1efd29ed9d3f748ac",
+                databaseId = DATABASE_ID,
+                collectionId = COLLECTION_ID,
                 documentId = ID.unique(),
                 data = mapOf("Name" to userRequest.name, "Gender" to userRequest.gender, "Phone" to userRequest.phoneNo),
             )

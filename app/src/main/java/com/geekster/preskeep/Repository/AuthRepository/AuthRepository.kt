@@ -1,4 +1,4 @@
-package com.geekster.preskeep.Repository
+package com.geekster.preskeep.Repository.AuthRepository
 
 import android.content.Context
 import com.geekster.preskeep.models.UserRequest

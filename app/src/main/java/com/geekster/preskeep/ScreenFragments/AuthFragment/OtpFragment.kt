@@ -1,4 +1,4 @@
-package com.geekster.preskeep.ScreenFragments
+package com.geekster.preskeep.ScreenFragments.AuthFragment
 
 import android.os.Bundle
 import android.util.Log
@@ -7,14 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.geekster.preskeep.R
 import com.geekster.preskeep.ViewModel.AuthViewModel
 import com.geekster.preskeep.databinding.FragmentOtpBinding
-import com.geekster.preskeep.databinding.FragmentSignupBinding
 import com.geekster.preskeep.models.otpRequest
 import com.geekster.preskeep.utils.Constants.TAG
 import com.geekster.preskeep.utils.Resource
@@ -98,4 +97,6 @@ class OtpFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
+
 }

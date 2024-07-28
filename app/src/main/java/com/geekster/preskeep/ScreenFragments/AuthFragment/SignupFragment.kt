@@ -1,4 +1,4 @@
-package com.geekster.preskeep.ScreenFragments
+package com.geekster.preskeep.ScreenFragments.AuthFragment
 
 import android.os.Bundle
 import android.text.Editable
@@ -19,7 +19,6 @@ import com.geekster.preskeep.utils.Constants.TAG
 import com.geekster.preskeep.utils.Resource
 import com.geekster.preskeep.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
-import io.appwrite.ID
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

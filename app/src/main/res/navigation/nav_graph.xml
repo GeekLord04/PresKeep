@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.geekster.preskeep.ScreenFragments.SignupFragment"
+        android:name="com.geekster.preskeep.ScreenFragments.AuthFragment.SignupFragment"
         android:label="fragment_signup"
         tools:layout="@layout/fragment_signup" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/otpFragment"
-        android:name="com.geekster.preskeep.ScreenFragments.OtpFragment"
+        android:name="com.geekster.preskeep.ScreenFragments.AuthFragment.OtpFragment"
         android:label="fragment_otp"
         tools:layout="@layout/fragment_otp" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/entryFragment"
-        android:name="com.geekster.preskeep.ScreenFragments.EntryFragment"
+        android:name="com.geekster.preskeep.ScreenFragments.AuthFragment.EntryFragment"
         android:label="fragment_entry"
         tools:layout="@layout/fragment_entry" >
         <action
@@ -39,5 +39,6 @@
         android:id="@+id/homeActivity"
         android:name="com.geekster.preskeep.HomeActivity"
         android:label="activity_home"
-        tools:layout="@layout/activity_home" />
+        tools:layout="@layout/activity_home" >
+    </activity>
 </navigation>
