@@ -12,11 +12,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.geekster.preskeep.R
-import com.geekster.preskeep.ViewModel.AuthViewModel
+import com.geekster.preskeep.ViewModel.AuthViewModels.AuthViewModel
 import com.geekster.preskeep.databinding.FragmentSignupBinding
 import com.geekster.preskeep.models.UserRequest
 import com.geekster.preskeep.utils.Constants.TAG
-import com.geekster.preskeep.utils.Resource
+import com.geekster.preskeep.utils.NetworkResource
 import com.geekster.preskeep.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -66,14 +66,14 @@ class SignupFragment : Fragment() {
     private fun bindObserver() {
         authViewModel.userDatabaseResponseLiveData.observe(viewLifecycleOwner, Observer {
             when(it){
-                is Resource.Success -> {
+                is NetworkResource.Success -> {
                     tokenManager.saveToken("DOCUMENT_ID",it.data!!.id)
                     findNavController().navigate(R.id.action_signupFragment_to_homeActivity)
                 }
-                is Resource.Error -> {
+                is NetworkResource.Error -> {
                     Log.d(TAG, "Signup: ${it.message}")
                 }
-                is Resource.Loading -> {
+                is NetworkResource.Loading -> {
                     Log.d(TAG, "Signup: Loading")
                 }
 

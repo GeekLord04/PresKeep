@@ -9,7 +9,7 @@ import com.geekster.preskeep.models.otpRequest
 import com.geekster.preskeep.utils.Constants.COLLECTION_ID
 import com.geekster.preskeep.utils.Constants.DATABASE_ID
 import com.geekster.preskeep.utils.Constants.TAG
-import com.geekster.preskeep.utils.Resource
+import com.geekster.preskeep.utils.NetworkResource
 import com.geekster.preskeep.utils.TokenManager
 import io.appwrite.ID
 import io.appwrite.Query
@@ -29,18 +29,18 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
     lateinit var tokenManager: TokenManager
 
 
-    private var _userResponseLiveData = MutableLiveData<Resource<Token>>()
-    val userResponseLiveData: LiveData<Resource<Token>>
+    private var _userResponseLiveData = MutableLiveData<NetworkResource<Token>>()
+    val userResponseLiveData: LiveData<NetworkResource<Token>>
         get() = _userResponseLiveData
 
 
-    private var _userOTPResponseLiveData = MutableLiveData<Resource<Session>>()
-    val userOTPResponseLiveData: LiveData<Resource<Session>>
+    private var _userOTPResponseLiveData = MutableLiveData<NetworkResource<Session>>()
+    val userOTPResponseLiveData: LiveData<NetworkResource<Session>>
         get() = _userOTPResponseLiveData
 
 
-    private var _userDatabaseResponseLiveData = MutableLiveData<Resource<Document<Map<String, Any>>>>()
-    val userDatabaseResponseLiveData: LiveData<Resource<Document<Map<String, Any>>>>
+    private var _userDatabaseResponseLiveData = MutableLiveData<NetworkResource<Document<Map<String, Any>>>>()
+    val userDatabaseResponseLiveData: LiveData<NetworkResource<Document<Map<String, Any>>>>
         get() = _userDatabaseResponseLiveData
 
 
@@ -50,10 +50,10 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
 
 //            tokenManager.saveToken("USER_ID",token.userId)
 
-            _userResponseLiveData.postValue(Resource.Success(token))
+            _userResponseLiveData.postValue(NetworkResource.Success(token))
         }
         catch (e : Exception){
-            _userResponseLiveData.postValue(Resource.Error("${e.message}"))
+            _userResponseLiveData.postValue(NetworkResource.Error("${e.message}"))
         }
     }
 
@@ -62,12 +62,12 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
             val session = account.updatePhoneSession(tokenManager.getToken("USER_ID").toString(),otpRequest.otp)
 //            tokenManager.saveToken("SESSION_ID",session.id)
 //            Log.d(TAG, "verifyOtp: $session")
-            _userOTPResponseLiveData.postValue(Resource.Success(session))
+            _userOTPResponseLiveData.postValue(NetworkResource.Success(session))
 
         }
         catch (e : Exception){
             Log.d(TAG, "verifyOtp: ${e.message}")
-            _userOTPResponseLiveData.postValue(Resource.Error("${e.message}"))
+            _userOTPResponseLiveData.postValue(NetworkResource.Error("${e.message}"))
         }
     }
 
@@ -81,10 +81,10 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
             )
             Log.d(TAG, "database response: $response")
 //                tokenManager.saveToken("DATABASE_TOKEN",response.id)
-            _userDatabaseResponseLiveData.postValue(Resource.Success(response))
+            _userDatabaseResponseLiveData.postValue(NetworkResource.Success(response))
         }
         catch (e : Exception){
-            _userDatabaseResponseLiveData.postValue(Resource.Error("${e.message}"))
+            _userDatabaseResponseLiveData.postValue(NetworkResource.Error("${e.message}"))
             Log.d(TAG, "userRegister: ${e.message}")
         }
     }
@@ -97,6 +97,8 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
         )
 
         if (getPhoneNumber.total == 1.toLong()){
+            tokenManager.saveToken("DOCUMENT_ID",getPhoneNumber.documents[0].id)
+            Log.d(TAG, "checkUser: ${tokenManager.getToken("DOCUMENT_ID")}")
             return true
         }
         return false
@@ -105,13 +107,13 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
     override suspend fun clearLiveData(data : String) {
         when(data){
             "Response" -> {
-                _userResponseLiveData = MutableLiveData<Resource<Token>>()
+                _userResponseLiveData = MutableLiveData<NetworkResource<Token>>()
             }
             "OTP" -> {
-                _userOTPResponseLiveData = MutableLiveData<Resource<Session>>()
+                _userOTPResponseLiveData = MutableLiveData<NetworkResource<Session>>()
             }
             "Database" -> {
-                _userDatabaseResponseLiveData = MutableLiveData<Resource<Document<Map<String, Any>>>>()
+                _userDatabaseResponseLiveData = MutableLiveData<NetworkResource<Document<Map<String, Any>>>>()
             }
             else ->{
                 Log.d(TAG, "clearLiveData: No data mentioned")
@@ -119,6 +121,8 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
         }
 
     }
+
+
 
 
 }

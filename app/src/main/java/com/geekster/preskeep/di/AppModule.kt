@@ -10,6 +10,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.appwrite.Client
 import io.appwrite.services.Account
+import io.appwrite.services.Avatars
 import io.appwrite.services.Databases
 import io.appwrite.services.Storage
 import javax.inject.Singleton
@@ -43,6 +44,12 @@ object AppModule {
     @Singleton
     fun providesAppWriteStorage(appWrite: Client) : Storage{
         return Storage(appWrite)
+    }
+
+    @Provides
+    @Singleton
+    fun providesAppWriteAvatar(appWrite: Client) : Avatars{
+        return Avatars(appWrite)
     }
 
 }

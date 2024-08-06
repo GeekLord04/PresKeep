@@ -88,5 +88,8 @@ dependencies {
     //Bottom navigation
     implementation("com.github.qamarelsafadi:CurvedBottomNavigation:0.1.3")
 
+    //Coil
+    implementation("io.coil-kt:coil:2.7.0")
+
 
 }

@@ -7,16 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.geekster.preskeep.R
-import com.geekster.preskeep.ViewModel.AuthViewModel
+import com.geekster.preskeep.ViewModel.AuthViewModels.AuthViewModel
 import com.geekster.preskeep.databinding.FragmentOtpBinding
 import com.geekster.preskeep.models.otpRequest
 import com.geekster.preskeep.utils.Constants.TAG
-import com.geekster.preskeep.utils.Resource
+import com.geekster.preskeep.utils.NetworkResource
 import com.geekster.preskeep.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -70,7 +69,7 @@ class OtpFragment : Fragment() {
     private fun bindObserver() {
         authViewModel.userOTPResponseLiveData.observe(viewLifecycleOwner) {
             when(it){
-                is Resource.Success -> {
+                is NetworkResource.Success -> {
                     Log.d(TAG, "Session ID: ${it.data.toString()}")
                     tokenManager.saveToken("SESSION_ID",it.data!!.id)
                     lifecycleScope.launch {
@@ -82,10 +81,10 @@ class OtpFragment : Fragment() {
                         }
                     }
                 }
-                is Resource.Error -> {
+                is NetworkResource.Error -> {
                     Toast.makeText(context,"${it.message}",Toast.LENGTH_SHORT).show()
                 }
-                is Resource.Loading -> {
+                is NetworkResource.Loading -> {
                     Log.d(TAG, "Otp Fragment Loading")
                 }
 

@@ -3,36 +3,201 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#DDE8EC"
     android:layout_height="match_parent"
-    android:background="@drawable/user_bg"
     tools:context=".ScreenFragments.HomeFragments.UserFragment">
 
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="320dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="65dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="45dp"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="110dp"
+            android:layout_height="110dp" />
+
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/montserrat_medium"
             android:textColor="@color/dark_blue"
-            android:text="John Doe"
-            android:textSize="37sp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:fontFamily="@font/montserrat"
-            android:textSize="16sp"
-            android:text="05/07/2023"
-            android:layout_marginTop="5dp" />
+            android:textSize="34sp" />
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="340dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <TextView
+            android:id="@+id/profile_dob"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:drawablePadding="7dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center"
+            android:textColor="@color/dark_blue"
+            android:textSize="18sp"
+            app:drawableStartCompat="@drawable/gender_profile_svg" />
+
+        <TextView
+            android:id="@+id/profile_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:drawablePadding="7dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center"
+            android:textColor="@color/dark_blue"
+            android:textSize="18sp"
+            app:drawableStartCompat="@drawable/phone_icon" />
+    </RelativeLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="340dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        app:cardBackgroundColor="#D6E8EE"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:strokeColor="#D6E8EE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <!-- "20" TextView -->
+
+            <!-- "Prescription" TextView -->
+
+            <TextView
+                android:id="@+id/prescription_no"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/dark_blue"
+                android:textSize="35sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/prescription_no"
+                android:layout_alignStart="@+id/prescription_no"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="-29dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/montserrat_light_italic"
+                android:gravity="center"
+                android:text="Prescription"
+                android:textColor="@color/light_blue"
+                android:textSize="18sp" />
+
+            <!-- "30" TextView -->
+            <TextView
+                android:id="@+id/report_no"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/dark_blue"
+                android:textSize="35sp" />
+
+            <!-- "Reports" TextView -->
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_below="@id/report_no"
+                android:layout_alignEnd="@+id/report_no"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="-10dp"
+                android:fontFamily="@font/montserrat_light_italic"
+                android:gravity="center"
+                android:text="Reports"
+                android:textColor="@color/light_blue"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/update_details_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Details"
+            android:background="@drawable/update_details_button_bg"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/montserrat_light"
+            android:layout_gravity="center"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:background="@drawable/logout_button_bg"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="#A71111"
+            android:textSize="16sp"
+            android:fontFamily="@font/montserrat_light"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

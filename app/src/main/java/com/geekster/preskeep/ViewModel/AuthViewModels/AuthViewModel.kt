@@ -1,4 +1,4 @@
-package com.geekster.preskeep.ViewModel
+package com.geekster.preskeep.ViewModel.AuthViewModels
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.geekster.preskeep.Repository.AuthRepository.AuthRepositoryImpl
 import com.geekster.preskeep.models.UserRequest
 import com.geekster.preskeep.models.otpRequest
-import com.geekster.preskeep.utils.Resource
+import com.geekster.preskeep.utils.NetworkResource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.appwrite.models.Document
 import io.appwrite.models.Session
@@ -19,13 +19,13 @@ import javax.inject.Inject
 @HiltViewModel
 class AuthViewModel @Inject constructor(private val repository: AuthRepositoryImpl) : ViewModel() {
 
-    val userResponseLiveData: LiveData<Resource<Token>>
+    val userResponseLiveData: LiveData<NetworkResource<Token>>
         get() = repository.userResponseLiveData
 
-    val userOTPResponseLiveData: LiveData<Resource<Session>>
+    val userOTPResponseLiveData: LiveData<NetworkResource<Session>>
         get() = repository.userOTPResponseLiveData
 
-    val userDatabaseResponseLiveData : LiveData<Resource<Document<Map<String, Any>>>>
+    val userDatabaseResponseLiveData : LiveData<NetworkResource<Document<Map<String, Any>>>>
         get() = repository.userDatabaseResponseLiveData
 
     suspend fun createUserWithPhone(userRequest : UserRequest)  {

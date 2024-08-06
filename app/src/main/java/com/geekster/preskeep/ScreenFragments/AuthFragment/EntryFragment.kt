@@ -7,16 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.geekster.preskeep.R
-import com.geekster.preskeep.ViewModel.AuthViewModel
+import com.geekster.preskeep.ViewModel.AuthViewModels.AuthViewModel
 import com.geekster.preskeep.databinding.FragmentEntryBinding
 import com.geekster.preskeep.models.UserRequest
 import com.geekster.preskeep.utils.Constants.TAG
-import com.geekster.preskeep.utils.Resource
+import com.geekster.preskeep.utils.NetworkResource
 import com.geekster.preskeep.utils.TokenManager
 import dagger.hilt.android.AndroidEntryPoint
 import io.appwrite.ID
@@ -72,7 +71,7 @@ class EntryFragment : Fragment() {
     private fun bindObserver() {
         authViewModel.userResponseLiveData.observe(viewLifecycleOwner) {
             when (it) {
-                is Resource.Success -> {
+                is NetworkResource.Success -> {
                     Log.d(TAG, "USER ID: ${it.data.toString()}")
                     tokenManager.saveToken("USER_ID", it.data!!.userId)
                     tokenManager.saveToken("PHONE_NO",getUserRequest().phoneNo)
@@ -81,11 +80,11 @@ class EntryFragment : Fragment() {
 
                 }
 
-                is Resource.Error -> {
+                is NetworkResource.Error -> {
                     Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT).show()
                 }
 
-                is Resource.Loading -> {
+                is NetworkResource.Loading -> {
                     Log.d(TAG, "Entry Fragment Loading")
                 }
             }
