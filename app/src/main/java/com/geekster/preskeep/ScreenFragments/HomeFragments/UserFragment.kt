@@ -18,9 +18,11 @@ import com.geekster.preskeep.utils.NetworkResource
 import com.geekster.preskeep.utils.TokenManager
 import com.qamar.curvedbottomnaviagtion.log
 import dagger.hilt.android.AndroidEntryPoint
+import io.appwrite.extensions.toJson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.net.URL
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -68,7 +70,20 @@ class UserFragment : Fragment() {
                     binding.profileDob.text = it.data?.data?.get("Gender").toString()
                     binding.profilePhone.text = it.data?.data?.get("Phone").toString()
 
-//                    binding.prescriptionNo.text = it.data?.data?.get("Prescription").also { }
+                    //Prescription as List
+                    val listOfPrescription  = it.data?.data?.get("Prescriptions").let { random ->
+                        random as List<*>
+                    }
+                    binding.prescriptionNo.text = listOfPrescription.size.toString()
+                    Log.d(TAG, "Prescription List : ${listOfPrescription.size}")
+
+                    //Report as List
+                    val listOfReports  = it.data?.data?.get("Reports").let { random2 ->
+                        random2 as List<*>
+                    }
+                    binding.reportNo.text = listOfReports.size.toString()
+                    Log.d(TAG, "Report List : ${listOfReports.size}")
+
                 }
                 is NetworkResource.Error -> {
                     Log.d(TAG, "Error in Document: ${it.message}, ${tokenManager.getToken("DOCUMENT_ID")}")
