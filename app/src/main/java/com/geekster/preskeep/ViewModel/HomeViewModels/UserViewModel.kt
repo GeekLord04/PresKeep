@@ -21,6 +21,10 @@ class UserViewModel @Inject constructor(private val repository: UserRepositoryIm
     val userInfoLiveData: LiveData<NetworkResource<Document<Map<String, Any>>>>
         get() = _userInfoLiveData
 
+    private val _userLogoutLiveData = MutableLiveData<NetworkResource<Any>>()
+    val userLogoutLiveData: LiveData<NetworkResource<Any>>
+        get() = _userLogoutLiveData
+
 //    private val _userInfoLiveData = MutableLiveData<NetworkResource<DocumentList<Map<String, Any>>>>()
 //    val userInfoLiveData: LiveData<NetworkResource<DocumentList<Map<String, Any>>>>
 //        get() = _userInfoLiveData
@@ -35,5 +39,12 @@ class UserViewModel @Inject constructor(private val repository: UserRepositoryIm
         _userInfoLiveData.postValue(NetworkResource.Loading())
         val response = repository.getUserInfo(documentId)
         _userInfoLiveData.postValue(response)
+    }
+
+    suspend fun logoutUser(session : String){
+        _userLogoutLiveData.postValue(NetworkResource.Loading())
+        val response = repository.logoutUser(session)
+        _userLogoutLiveData.postValue(response)
+
     }
 }

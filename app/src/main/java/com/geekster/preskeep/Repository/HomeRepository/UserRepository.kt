@@ -9,4 +9,6 @@ interface UserRepository {
     suspend fun getAvatar(name : String) : NetworkResource<ByteArray>
 
     suspend fun getUserInfo(documentId : String) : NetworkResource<Document<Map<String, Any>>>
+
+    suspend fun logoutUser(session : String) : NetworkResource<Any>
 }
