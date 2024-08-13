@@ -1,3 +1,6 @@
+import com.android.build.api.variant.BuildConfigField
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -17,6 +20,16 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val properties = Properties()
+        properties.load(project.rootProject.file("local.properties").inputStream())
+
+//        BuildConfigField("String", "BASE_URL", properties.getProperty("BASE_URL"))
+
+        buildConfigField("String", "PROJECT_ID", properties.getProperty("PROJECT_ID"))
+        buildConfigField("String", "PREFS_TOKEN_FILE", properties.getProperty("PREFS_TOKEN_FILE"))
+        buildConfigField("String", "DATABASE_ID", properties.getProperty("DATABASE_ID"))
+        buildConfigField("String", "COLLECTION_ID", properties.getProperty("COLLECTION_ID"))
     }
 
     buildTypes {
@@ -39,6 +52,7 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
 }
 
