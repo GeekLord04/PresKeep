@@ -12,7 +12,7 @@
         android:layout_width="331dp"
         android:layout_height="286dp"
         android:layout_marginTop="52dp"
-        android:src="@drawable/signup_svg"
+        android:src="@drawable/otp_security"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

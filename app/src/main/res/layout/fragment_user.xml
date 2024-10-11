@@ -68,7 +68,7 @@
             android:gravity="center"
             android:textColor="@color/dark_blue"
             android:textSize="18sp"
-            app:drawableStartCompat="@drawable/phone_icon" />
+            app:drawableStartCompat="@drawable/phone_svg" />
     </RelativeLayout>
 
     <com.google.android.material.card.MaterialCardView

@@ -79,6 +79,7 @@ class AuthRepositoryImpl @Inject constructor(private val account: Account, priva
                 documentId = ID.unique(),
                 data = mapOf("Name" to userRequest.name, "Gender" to userRequest.gender, "Phone" to userRequest.phoneNo),
             )
+
             Log.d(TAG, "database response: $response")
 //                tokenManager.saveToken("DATABASE_TOKEN",response.id)
             _userDatabaseResponseLiveData.postValue(NetworkResource.Success(response))

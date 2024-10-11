@@ -30,6 +30,8 @@ android {
         buildConfigField("String", "PREFS_TOKEN_FILE", properties.getProperty("PREFS_TOKEN_FILE"))
         buildConfigField("String", "DATABASE_ID", properties.getProperty("DATABASE_ID"))
         buildConfigField("String", "COLLECTION_ID", properties.getProperty("COLLECTION_ID"))
+        buildConfigField("String", "PRESCRIPTION_STORAGE_ID", properties.getProperty("PRESCRIPTION_STORAGE_ID"))
+        buildConfigField("String", "REPORT_STORAGE_ID", properties.getProperty("REPORT_STORAGE_ID"))
     }
 
     buildTypes {
@@ -104,6 +106,9 @@ dependencies {
 
     //Coil
     implementation("io.coil-kt:coil:2.7.0")
+
+    //Expandable FAB
+    implementation("com.nambimobile.widgets:expandable-fab:1.2.1")
 
 
 }
